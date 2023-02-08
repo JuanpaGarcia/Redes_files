@@ -1,0 +1,15 @@
+../source/mwa_coordinator.c:150:6:main_task	16	static
+../source/mwa_coordinator.c:191:6:App_init	8	static
+../source/mwa_coordinator.c:229:6:AppThread	48	static
+../source/mwa_coordinator.c:429:13:UartRxCallBack	32	static
+../source/mwa_coordinator.c:464:16:App_StartScan	32	static
+../source/mwa_coordinator.c:525:13:App_HandleScanEdConfirm	40	static
+../source/mwa_coordinator.c:615:16:App_StartCoordinator	40	static
+../source/mwa_coordinator.c:718:16:App_SendAssociateResponse	32	static
+../source/mwa_coordinator.c:791:16:App_HandleMlmeInput	16	static
+../source/mwa_coordinator.c:819:13:App_HandleMcpsInput	16	static
+../source/mwa_coordinator.c:853:16:App_WaitMsg	16	static
+../source/mwa_coordinator.c:882:13:App_TransmitUartData	24	static
+../source/mwa_coordinator.c:964:13:App_HandleKeys	16	static
+../source/mwa_coordinator.c:996:14:MLME_NWK_SapHandler	16	static
+../source/mwa_coordinator.c:1004:14:MCPS_NWK_SapHandler	16	static

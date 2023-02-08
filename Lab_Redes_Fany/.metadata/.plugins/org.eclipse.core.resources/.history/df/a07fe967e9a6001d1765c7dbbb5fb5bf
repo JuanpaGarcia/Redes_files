@@ -1,0 +1,33 @@
+/*
+ * MyNewTask.h
+ *
+ *  Created on: 7 feb. 2023
+ *      Author: garci
+ */
+
+#ifndef MYNEWTASK_H_
+#define MYNEWTASK_H_
+
+/* Drv */
+#include "LED.h"
+#include "Keyboard.h"
+
+/* Fwk */
+#include "SecLib.h"
+#include "SerialManager.h"
+#include "RNG_Interface.h"
+#include "MemManager.h"
+#include "TimersManager.h"
+#include "FunctionLib.h"
+
+/* 802.15.4 */
+#include "PhyInterface.h"
+#include "MacInterface.h"
+
+/* KSDK */
+#include "board.h"
+#include "fsl_os_abstraction.h"
+
+void My_Task(osaTaskParam_t argument);
+
+#endif /* MYNEWTASK_H_ */

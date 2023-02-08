@@ -1,0 +1,21 @@
+!SESSION 2023-02-07 22:53:41.607 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-02-07 22:54:59.062
+!MESSAGE Recreating part support. No part support available.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-02-07 22:55:05.780
+!MESSAGE The device 'MK64FN1M0xxx12' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K64F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-02-07 22:55:06.924
+!MESSAGE The device 'MKW41Z512xxx4' (version='1.0.0') from SDK 'SDK_2.x_FRDM-KW41Z' (version='2.2.3', build='') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2023-02-07 22:55:07.180
+!MESSAGE The device 'MK66FN2M0xxx18' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K66F' (version='2.11.0', build='541 2022-01-14') will be installed.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-02-07 22:56:10.332
+!MESSAGE Indexed 'frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos' (0 sources, 0 headers) in 0.002 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)

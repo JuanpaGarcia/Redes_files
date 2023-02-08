@@ -1,0 +1,18 @@
+/*
+ * MyNewTask.c
+ *
+ *  Created on: 7 feb. 2023
+ *      Author: garci
+ */
+
+#include "MyNewTask.h"
+
+osaEventId_t          mMyEvents;
+/* Global Variable to store our TimerID */
+tmrTimerID_t myTimerID = gTmrInvalidTimerID_c;
+
+/* Handler ID for task */
+osaTaskId_t gMyTaskHandler_ID;
+
+/* Local variable to store the current state of the LEDs */
+static uint8_t ledsState = 0;
