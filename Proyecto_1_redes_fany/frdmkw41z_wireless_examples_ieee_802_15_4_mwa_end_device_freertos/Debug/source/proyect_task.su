@@ -1,0 +1,8 @@
+../source/proyect_task.c:27:6:Proyect_task	24	static
+../source/proyect_task.c:100:6:Proyect_task_Init	8	static
+../source/proyect_task.c:109:13:myTaskTimerCallback	16	static
+../source/proyect_task.c:115:6:MyTaskTimer_Stop	8	static
+../source/proyect_task.c:120:6:MyTaskTimer_Start	8	static
+../source/proyect_task.c:125:6:sw3_function	8	static
+../source/proyect_task.c:130:6:sw4_function	8	static
+../source/proyect_task.c:135:9:get_message_to_send	8	static

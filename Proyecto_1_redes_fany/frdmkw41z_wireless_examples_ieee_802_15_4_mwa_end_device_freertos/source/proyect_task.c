@@ -27,17 +27,17 @@ OSA_TASK_DEFINE(Proyect_task, gMyTaskPriority_c, 1, gMyTaskStackSize_c, FALSE );
 void Proyect_task(osaTaskParam_t argument)
 {
 	osaEventFlags_t customEvent;
-	myTimerID = TMR_AllocateTimer();
+	proyect_timer = TMR_AllocateTimer();
 
 	if( !gUseRtos_c && !customEvent)
 	{
-	break;
+
 	}
 
 	  /* Depending on the received event */
 	  switch(customEvent){
 		  case gTimer_init_event_c:
-		   TMR_StartIntervalTimer(myTimerID, /*myTimerID*/
+		   TMR_StartIntervalTimer(proyect_timer, /*myTimerID*/
 				   WAIT_TIME, /* Timer's Timeout */
 			 myTaskTimerCallback, /* pointer to
 		myTaskTimerCallback function */
@@ -55,10 +55,9 @@ void Proyect_task(osaTaskParam_t argument)
 			  break;
 
 		  case gTimerStop_c: /* Event to stop the timer */
-		   ledsState = 0;
 		   TurnOffLeds();
 
-		   TMR_StopTimer(myTimerID);
+		   TMR_StopTimer(proyect_timer);
 		   break;
 
 		  case gTimer_task_event_c:
@@ -66,7 +65,7 @@ void Proyect_task(osaTaskParam_t argument)
 				  if(3 < counter) counter = 0;
 				  TurnOffLeds();
 
-				  swtich(counter)
+				  switch(counter)
 				  {
 					  case 0:
 						  Led_TurnOn(LED1);
@@ -120,7 +119,7 @@ void MyTaskTimer_Stop(void)
 
 void MyTaskTimer_Start(void)
 {
-	OSA_EventSet(Proyect_events, gTimerStart_c);
+	OSA_EventSet(Proyect_events, gTimer_init_event_c);
 }
 
 void sw3_function(void)
