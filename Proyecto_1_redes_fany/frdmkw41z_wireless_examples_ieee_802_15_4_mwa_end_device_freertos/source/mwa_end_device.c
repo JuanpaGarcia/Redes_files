@@ -83,8 +83,10 @@ static uint8_t App_HandleAssociateConfirm(nwkMessage_t *pMsg);
 static uint8_t App_HandleMlmeInput(nwkMessage_t *pMsg);
 static void    App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn);
 static void    App_TransmitUartData(void);
+static void    App_TransmitCounterData(void);
 static void    AppPollWaitTimeout(void *);
 static void    App_HandleKeys( key_event_t events );
+void set_event_counter(void);
 
 void App_init( void );
 void AppThread (osaTaskParam_t argument);
@@ -216,15 +218,11 @@ void main_task(uint32_t param)
         NvModuleInit();
 #endif
         
-        //CHECK LEDS
-        Led_TurnOn(LED1);
-        Led_TurnOn(LED2);
-        Led_TurnOn(LED3);
-        Led_TurnOn(LED4);
-
         /* Bind to MAC layer */
         macInstance = BindToMAC( (instanceId_t)0 );
         Mac_RegisterSapHandlers( MCPS_NWK_SapHandler, MLME_NWK_SapHandler, macInstance );
+
+        set_funtion_pointer(set_event_counter);
 
         App_init();
 
@@ -561,6 +559,12 @@ void AppThread(osaTaskParam_t argument)
                             TMR_StartLowPowerTimer(mTimer_c, gTmrSingleShotTimer_c ,mPollInterval, AppPollWaitTimeout, NULL );
                             /* Go to the listen state */
                             gState = stateListen;
+
+                            //init our own task
+                            Proyect_task_Init();
+                            MyTaskTimer_Start();
+
+
                             OSA_EventSet(mAppEvent, gAppEvtDummyEvent_c); 
                         }        
                         else 
@@ -597,6 +601,12 @@ void AppThread(osaTaskParam_t argument)
             {      
                 /* get byte from UART */
                 App_TransmitUartData();
+            }
+
+            if(ev & gAppEvtSendCounter_c)
+            {
+            	/*Send the counter to the coordinator*/
+            	App_TransmitCounterData();
             }
 #if gNvmTestActive_d  
             if (timeoutCounter >= mDefaultValueOfTimeoutError_c)
@@ -1126,6 +1136,85 @@ static void App_TransmitUartData(void)
     }
 }
 
+
+//App_TransmitCounterData
+/******************************************************************************
+* The App_TransmitUartData() function will perform (single/multi buffered)
+* data transmissions of data received by the UART. Data could also come from
+* other sources such as sensors etc. This is completely determined by the
+* application. The constant mDefaultValueOfMaxPendingDataPackets_c determine the maximum
+* number of packets pending for transmission in the MAC. A global variable
+* is incremented each time a data packet is sent to the MCPS, and decremented
+* when the corresponding MCPS-Data Confirm message is received. If the counter
+* reaches the defined maximum no more data buffers are allocated until the
+* counter is decreased below the maximum number of pending packets.
+*
+* The function uses the coordinator information gained during the Active Scan,
+* and the short address assigned to us by coordinator, for building an MCPS-
+* Data Request message. The message is sent to the MCPS service access point
+* in the MAC.
+******************************************************************************/
+static void App_TransmitCounterData(void)
+{
+    uint16_t count = 1;  //1 byte will be send each transmittion
+
+    /* Limit data transfer size */
+    if( count > mMaxKeysToReceive_c )
+    {
+        count = mMaxKeysToReceive_c;
+    }
+
+    /* Use multi buffering for increased TX performance. It does not really
+    have any effect at low UART baud rates, but serves as an
+    example of how the throughput may be improved in a real-world
+    application where the data rate is of concern. */
+    if( (mcPendingPackets < mDefaultValueOfMaxPendingDataPackets_c) && (mpPacket == NULL) )
+    {
+        /* If the maximum number of pending data buffes is below maximum limit
+        and we do not have a data buffer already then allocate one. */
+        mpPacket = MSG_Alloc(sizeof(nwkToMcpsMessage_t) + gMaxPHYPacketSize_c);
+    }
+
+    if(mpPacket != NULL)
+    {
+        /* Data is available in the SerialManager's receive buffer. Now create an
+        MCPS-Data Request message containing the data. */
+        mpPacket->msgType = gMcpsDataReq_c;
+        mpPacket->msgData.dataReq.pMsdu = (uint8_t*)(&mpPacket->msgData.dataReq.pMsdu) +
+                                          sizeof(mpPacket->msgData.dataReq.pMsdu);
+
+        //Serial_Read(interfaceId, mpPacket->msgData.dataReq.pMsdu, count, &count);
+        //FLib_MemCpy(&mpPacket->msgData.dataReq.pMsdu, get_message_to_send(), 1);
+        mpPacket->msgData.dataReq.pMsdu = get_message_to_send();
+
+        /* Create the header using coordinator information gained during
+        the scan procedure. Also use the short address we were assigned
+        by the coordinator during association. */
+        FLib_MemCpy(&mpPacket->msgData.dataReq.dstAddr, &mCoordInfo.coordAddress, 8);
+        FLib_MemCpy(&mpPacket->msgData.dataReq.srcAddr, &maMyAddress, 8);
+        FLib_MemCpy(&mpPacket->msgData.dataReq.dstPanId, &mCoordInfo.coordPanId, 2);
+        FLib_MemCpy(&mpPacket->msgData.dataReq.srcPanId, &mCoordInfo.coordPanId, 2);
+        mpPacket->msgData.dataReq.dstAddrMode = mCoordInfo.coordAddrMode;
+        mpPacket->msgData.dataReq.srcAddrMode = mAddrMode;
+        mpPacket->msgData.dataReq.msduLength = count;
+        /* Request MAC level acknowledgement of the data packet */
+        mpPacket->msgData.dataReq.txOptions = gMacTxOptionsAck_c;
+        /* Give the data packet a handle. The handle is
+        returned in the MCPS-Data Confirm message. */
+        mpPacket->msgData.dataReq.msduHandle = mMsduHandle++;
+        /* Don't use security */
+        mpPacket->msgData.dataReq.securityLevel = gMacSecurityNone_c;
+
+        /* Send the Data Request to the MCPS */
+        (void)NWK_MCPS_SapHandler(mpPacket, macInstance);
+
+        /* Prepare for another data buffer */
+        mpPacket = NULL;
+        mcPendingPackets++;
+    }
+
+}
+
 /******************************************************************************
 * The App_ReceiveUartData() function will check if it is time to send out an
 * MLME-Poll request in order to receive data from the coordinator. If its time,
@@ -1235,4 +1324,9 @@ resultType_t MCPS_NWK_SapHandler (mcpsToNwkMessage_t* pMsg, instanceId_t instanc
   MSG_Queue(&mMcpsNwkInputQueue, pMsg);
   OSA_EventSet(mAppEvent, gAppEvtMessageFromMCPS_c);
   return gSuccess_c;
+}
+
+void set_event_counter(void)
+{
+	OSA_EventSet(mAppEvent, gAppEvtSendCounter_c);
 }

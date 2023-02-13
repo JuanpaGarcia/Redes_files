@@ -38,7 +38,7 @@
 #ifdef gPHY_802_15_4g_d
   #define mDefaultValueOfChannel_c (0x0001FFFF)
 #else
-  #define mDefaultValueOfChannel_c (0x07FFF800)
+  #define mDefaultValueOfChannel_c (1<<25)
 #endif
 
 /* Maximum number of outstanding packets */
@@ -85,6 +85,7 @@ enum {
 #define gAppEvtMessageFromMLME_c       (1 << 2)
 #define gAppEvtMessageFromMCPS_c       (1 << 3)
 #define gAppEvtPressedRestoreNvmBut_c  (1 << 4)
+#define gAppEvtSendCounter_c  			(1 << 5)
 
 /* Error codes */
 enum {

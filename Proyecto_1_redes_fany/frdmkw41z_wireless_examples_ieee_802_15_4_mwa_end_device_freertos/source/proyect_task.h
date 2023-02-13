@@ -37,14 +37,16 @@ void Proyect_task_Init(void);
 void sw3_function(void);
 void sw4_function(void);
 
-static void myTaskTimerCallback(void *param);
+void myTaskTimerCallback(void *param);
 
 /* Main custom task */
 void Proyect_task(osaTaskParam_t argument);
 
 void timer_callback(void);
 
-uint8_t get_message_to_send(void);
+void set_funtion_pointer(void (*ptr)(void));
+
+uint8_t* get_message_to_send(void);
 
 
 #endif /* PROYECT_TASK_H_ */

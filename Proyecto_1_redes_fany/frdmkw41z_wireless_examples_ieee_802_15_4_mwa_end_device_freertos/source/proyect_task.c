@@ -7,6 +7,8 @@
 
 #include "proyect_task.h"
 
+void (*set_event_ptr)(void);
+
 /*Variables */
 osaEventId_t    Proyect_events;
 /* Global Variable to store our TimerID */
@@ -14,7 +16,7 @@ tmrTimerID_t proyect_timer = gTmrInvalidTimerID_c;
 /* Handler ID for task */
 osaTaskId_t gMyTaskHandler_ID;
 
-static uint8_t counter = 0;
+static uint8_t counter = '4';
 
 
 /*Definitions*/
@@ -29,10 +31,11 @@ void Proyect_task(osaTaskParam_t argument)
 	osaEventFlags_t customEvent;
 	proyect_timer = TMR_AllocateTimer();
 
-	if( !gUseRtos_c && !customEvent)
-	{
+while(1)
+{
 
-	}
+	OSA_EventWait(Proyect_events, osaEventFlagsAll_c, FALSE, osaWaitForever_c,
+	&customEvent);
 
 	  /* Depending on the received event */
 	  switch(customEvent){
@@ -47,11 +50,11 @@ void Proyect_task(osaTaskParam_t argument)
 		   break;
 
 		  case gSW3TaskEvent_c: /* Event called from myTaskTimerCallback */
-			  counter = 1;
+			  counter = '1';
 		   break;
 
 		  case gSW4TaskEvent_c:
-			  counter = 2;
+			  counter = '2';
 			  break;
 
 		  case gTimerStop_c: /* Event to stop the timer */
@@ -62,39 +65,41 @@ void Proyect_task(osaTaskParam_t argument)
 
 		  case gTimer_task_event_c:
 				  counter++;
-				  if(3 < counter) counter = 0;
+				  if('3' < counter) counter = '0';
 				  TurnOffLeds();
-
 				  switch(counter)
 				  {
-					  case 0:
-						  Led_TurnOn(LED1);
+					  case '0':
+						  Led_TurnOn(LED2);//Turn on red led
 
 						  break;
-					  case 1:
-						  Led_TurnOn(LED2);
+					  case '1':
+						  Led_TurnOn(LED3);//Turn on green led
 
 						  break;
-					  case 2:
-						  Led_TurnOn(LED2);
+					  case '2':
+						  Led_TurnOn(LED4);//Turn on blue led
 
 						  break;
-					  case 3:
-						  Led_TurnOn(LED1);
+					  case '3':
+						  Led_TurnOn(LED2);//Turn on all RGB LEDs
+						  Led_TurnOn(LED3);
+						  Led_TurnOn(LED4);
 
 					  break;
 
 					  default:
 					  break;
 				  }
+
 				  //let the app there is something to process
-				  //OSA_EventSet(mAppEvent, gAppEvtRxFromUart_c);
+				  set_event_ptr();
 			  break;
 
 		  default:
 		   break;
 	  }
-
+	}
 }
 
 void Proyect_task_Init(void)
@@ -106,7 +111,7 @@ void Proyect_task_Init(void)
 
 /*Defined Prototyped*/
 /* This is the function called by the Timer each time it expires */
-static void myTaskTimerCallback(void *param)
+void myTaskTimerCallback(void *param)
 {
 	OSA_EventSet(Proyect_events, gTimer_task_event_c);
 }
@@ -132,7 +137,12 @@ void sw4_function(void)
 	OSA_EventSet(Proyect_events, gSW4TaskEvent_c);
 }
 
-uint8_t get_message_to_send(void)
+void set_funtion_pointer(void (*ptr)(void))
 {
-	return counter;
+	set_event_ptr = ptr;
+}
+
+uint8_t* get_message_to_send(void)
+{
+	return &counter;
 }
