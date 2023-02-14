@@ -1,0 +1,15 @@
+"Task Aware Debugger for GDB" version 11.7.0 (202212092054)
+(c) 2016-2022 NXP Semiconductors, Inc.
+==================================
+07:28:42.615 INFO: [ZephyrRTOS] .config file could not be read [C:\Redes_Embebidos\Proyecto_1_redes_fany\frdmkw41z_wireless_examples_ieee_802_15_4_mwa_coordinator_freertos\Debug\.config (El sistema no puede encontrar el archivo especificado)]
+07:28:42.615 INFO: [TadModel] DSF session ID 10 has started.
+07:28:46.133 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (SUSPENDED, USER_REQUEST)
+07:28:50.173 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (RESUMED, USER_REQUEST)
+07:28:50.196 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+07:29:05.512 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+07:29:12.680 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, BREAKPOINT)
+07:29:50.883 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+07:29:51.216 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, BREAKPOINT)
+07:30:01.156 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+07:30:55.516 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+07:30:56.532 INFO: [TadModel] DSF session ID 10 has ended.

@@ -760,11 +760,13 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
 		{
 			//since the device extendede address was not set before, this node is new, so add it
 			Nodes_array[node_counter_g].ExtendedAddress = pMsgIn->msgData.associateInd.deviceAddress;
+
+			//assign the short address based on the global node counter
+			Nodes_array[node_counter_g].shortAddress = node_counter_g +1;//increment first the counter and set it as short address
+
+
 			//increment the count
 			node_counter_g++;
-			//assign the short address based on the global node counter
-			Nodes_array[node_counter_g].shortAddress = node_counter_g;
-
 			pAssocRes->assocShortAddress = node_counter_g;
 			//add the device type if its FFD or can become coordinator assign FFD, else RFD
 
@@ -786,6 +788,11 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
 			{
 				Nodes_array[node_counter_g].RxOn = false;
 			}
+			Serial_Print(interfaceId, "\n\rNEW NODE INCOMING\n\n", gAllowToBlock_d);
+		}
+		else
+		{
+			Serial_Print(interfaceId, "\n\rThe node was already registered\n\n", gAllowToBlock_d);
 		}
 
     }
@@ -795,6 +802,12 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
          the PAN (Associate successful) but that long addressing is used.*/
       pAssocRes->assocShortAddress = 0xFFFE;
     }
+
+	Serial_Print(interfaceId, "\n\r The node was assigned with Short Address: ", gAllowToBlock_d);
+	/* Print the value of the LQI in hexa */
+	Serial_PrintHex(interfaceId, &(pAssocRes->assocShortAddress), 2, gPrtHexNoFormat_c);
+	Serial_Print(interfaceId, "\n\n\r", gAllowToBlock_d);
+
     /* Get the 64 bit address of the device requesting association. */
     FLib_MemCpy(&pAssocRes->deviceAddress, &pMsgIn->msgData.associateInd.deviceAddress, 8);
     /* Association granted. May also be gPanAtCapacity_c or gPanAccessDenied_c. */
@@ -912,6 +925,9 @@ static void App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstance)
 	Serial_Print(interfaceId, "\n\rPayload its: 0x", gAllowToBlock_d);
 	/* Print the value of the payload size in hexa */
 	Serial_PrintHex(interfaceId, &(pMsgIn->msgData.dataInd.msduLength), 1, gPrtHexNoFormat_c);
+
+	Serial_Print(interfaceId, "\n\rCounter value:\n\r", gAllowToBlock_d);
+
     break;
     
   default:
