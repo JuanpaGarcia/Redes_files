@@ -1279,3 +1279,815 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SESSION 2023-02-14 04:04:47.456 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.crt.log 4 -1 2023-02-14 04:12:53.745
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at com.crt.utils.general.Reporter.log(Reporter.java:591)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:521)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:751)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1534)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:394)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:210)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:213)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1171)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1150)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:200)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:211)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:867)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:817)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:810)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:516)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:138)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:402)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:315)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2330)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2375)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:209)
+	... 21 more
+
+!ENTRY com.crt.utils 1 0 2023-02-14 04:16:27.267
+!MESSAGE Connected to cbs.wondershare.com on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-02-14 04:16:27.690
+!MESSAGE Telnet session connected on port 2333->62574 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 04:17:28.196
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor@3c80c200): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Suspend operation timeout.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 04:17:28.196
+!MESSAGE Suspend operation timeout.
+
+!ENTRY com.crt.log 4 -1 2023-02-14 04:19:17.108
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at com.crt.utils.general.Reporter.log(Reporter.java:591)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:521)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:751)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1534)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:394)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:210)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:213)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1171)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1150)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:200)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:211)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:867)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:817)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:810)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:516)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:138)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:402)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:315)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2330)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2375)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:209)
+	... 21 more
+
+!ENTRY com.crt.log 4 -1 2023-02-14 05:56:30.934
+!MESSAGE Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+!STACK 0
+java.lang.Exception: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at com.crt.utils.general.Reporter.log(Reporter.java:591)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:521)
+	at com.crt.config.database.ChipVendor.save(ChipVendor.java:751)
+	at com.crt.config.database.TargetConfig.save(TargetConfig.java:1534)
+	at com.crt.config.SaveViewInfo.saving(SaveViewInfo.java:102)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:394)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:210)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:213)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1171)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1150)
+	at org.eclipse.core.internal.resources.Project.close(Project.java:200)
+	at org.eclipse.ui.actions.CloseResourceAction.invokeOperation(CloseResourceAction.java:171)
+	at org.eclipse.ui.actions.WorkspaceAction.execute(WorkspaceAction.java:159)
+	at org.eclipse.ui.actions.WorkspaceAction$1.runInWorkspace(WorkspaceAction.java:459)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:29)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:211)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:153)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:867)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:817)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:810)
+	at org.eclipse.cdt.core.model.CoreModel.setProjectDescription(CoreModel.java:1400)
+	at com.nxp.mcuxpresso.core.datamodels.SDKChipVendorDatabase.save(SDKChipVendorDatabase.java:516)
+	... 15 more
+Caused by: java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/frdmkw41z_wireless_examples_ieee_802_15_4_mwa_end_device_freertos
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:138)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:402)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:66)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:315)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2330)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2375)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2405)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:644)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:209)
+	... 21 more
+
+!ENTRY com.crt.log 1 0 2023-02-14 06:00:31.668
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 1 0 2023-02-14 06:00:31.672
+!MESSAGE RedlinkServer telnet session connected on port 3025->65250 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 4 0 2023-02-14 06:00:36.023
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY com.crt.utils 1 0 2023-02-14 06:00:45.303
+!MESSAGE Connected to cbs.wondershare.com on port 2332.
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2023-02-14 06:00:45.833
+!MESSAGE Telnet session connected on port 2333->65383 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:05:35.943
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@1bd5c711): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(gMacTxOptionAltExtAddr_c)
+Error message from debugger back end:
+Can't take address of "gMacTxOptionAltExtAddr_c" which isn't an lvalue. java.lang.Exception: Can't take address of "gMacTxOptionAltExtAddr_c" which isn't an lvalue.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:05:35.943
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(gMacTxOptionAltExtAddr_c)
+Error message from debugger back end:
+Can't take address of "gMacTxOptionAltExtAddr_c" which isn't an lvalue.
+!STACK 0
+java.lang.Exception: Can't take address of "gMacTxOptionAltExtAddr_c" which isn't an lvalue.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:05:35.944
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@3ae82784): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(gMacTxOptionFramePending_c)
+Error message from debugger back end:
+Can't take address of "gMacTxOptionFramePending_c" which isn't an lvalue. java.lang.Exception: Can't take address of "gMacTxOptionFramePending_c" which isn't an lvalue.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:05:35.944
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(gMacTxOptionFramePending_c)
+Error message from debugger back end:
+Can't take address of "gMacTxOptionFramePending_c" which isn't an lvalue.
+!STACK 0
+java.lang.Exception: Can't take address of "gMacTxOptionFramePending_c" which isn't an lvalue.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:05:35.963
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@576d3f4): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(gCapInfoAllocAddr_c)
+Error message from debugger back end:
+Can't take address of "gCapInfoAllocAddr_c" which isn't an lvalue. java.lang.Exception: Can't take address of "gCapInfoAllocAddr_c" which isn't an lvalue.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:05:35.963
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(gCapInfoAllocAddr_c)
+Error message from debugger back end:
+Can't take address of "gCapInfoAllocAddr_c" which isn't an lvalue.
+!STACK 0
+java.lang.Exception: Can't take address of "gCapInfoAllocAddr_c" which isn't an lvalue.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.236
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@57ec3958): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->securityLevel)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.236
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->securityLevel)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.237
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@7d3fe674): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).scanCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.237
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).scanCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.238
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@632199b1): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).resetCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.238
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).resetCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.240
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@2166ceda): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keyIndex)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.240
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keyIndex)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.241
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@48cdff5e): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).gtsInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.241
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).gtsInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.242
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@11688f97): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.242
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.243
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@7c9f8b04): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).securityLevel)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.244
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).securityLevel)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.257
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@230519ad): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).startCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.257
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).startCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.259
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@4f6985be): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).beaconNotifyInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.259
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).beaconNotifyInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.260
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@5982404e): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keyIndex)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.260
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keyIndex)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.261
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@3e4bfc55): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(pMsgIn)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.261
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(pMsgIn)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.284
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@10b9dc7f): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(pAssocRes)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.284
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(pAssocRes)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.288
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@8911052): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).deviceAddress)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.288
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).deviceAddress)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.289
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@109f573e): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).syncLossInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.289
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).syncLossInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.291
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@509a8590): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).tschModeCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.291
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).tschModeCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.300
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@54e705e9): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keySource)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.300
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keySource)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.302
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@643d37e9): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).capabilityInfo)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.302
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).capabilityInfo)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.303
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@2c5b1b2f): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).pollCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.303
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).pollCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.304
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@4a34d6d9): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).commStatusInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.304
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).commStatusInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.315
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@798b1b5f): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setSlotframeCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.315
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setSlotframeCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.317
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@4e20e5fb): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keyIdMode)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.317
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((((pMsgIn)->msgData).associateInd).keyIdMode)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.317
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@58f5c469): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->status)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.317
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->status)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.318
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@2aea3002): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).pollNotifyInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.318
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).pollNotifyInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.331
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@45c42632): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).keepAliveCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.331
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).keepAliveCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.333
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@3b126cbe): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).disassociateInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.333
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).disassociateInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.333
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@4fb94be): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).getCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.334
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).getCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.347
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@2afcdafc): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).associateCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.348
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).associateCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.349
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@4c2b9b1b): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).orphanInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.349
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).orphanInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.350
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@53f47d7f): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).beaconCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.350
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).beaconCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.364
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@7f2e121): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->deviceAddress)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.364
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->deviceAddress)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.365
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@6fecd941): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keySource)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.365
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keySource)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.366
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@274f87ef): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setLinkCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.366
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).setLinkCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.367
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@6b67b540): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keyIdMode)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.367
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->keyIdMode)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.368
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@6c754aba): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).disassociateCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.368
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).disassociateCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.369
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@1558e607): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).associateInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.369
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).associateInd)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.370
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@2484f850): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).gtsCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.370
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).gtsCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.380
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@5ab07996): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pMsgIn)->msgType)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.380
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pMsgIn)->msgType)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.381
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@581e9925): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pMsgIn)->msgData)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.381
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pMsgIn)->msgData)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.382
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@3daab540): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->assocShortAddress)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context. java.lang.Exception: No symbol "pAssocRes" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.382
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &((pAssocRes)->assocShortAddress)
+Error message from debugger back end:
+No symbol "pAssocRes" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pAssocRes" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-02-14 06:10:11.396
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@fd9500e): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).rxEnableCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context. java.lang.Exception: No symbol "pMsgIn" in current context.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2023-02-14 06:10:11.396
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression &(((pMsgIn)->msgData).rxEnableCnf)
+Error message from debugger back end:
+No symbol "pMsgIn" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pMsgIn" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)

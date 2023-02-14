@@ -17,9 +17,25 @@
 /*! *********************************************************************************
 *************************************************************************************
 * Include
+*
+*
 *************************************************************************************
 ********************************************************************************** */
+#include <stdint.h>
+#include <MacInterface.h>
 
+/* The current state of the applications state machine */
+typedef struct
+{
+	/* Short address */
+	uint16_t shortAddress;
+	/* Extended address */
+	uint64_t ExtendedAddress;
+	/* RxOnWhenIdle */
+	uint8_t RxOn;
+	/* Device type */
+	macCapabilityInfo_tag DeviceType;
+} mcps_Nodes_t;
 /************************************************************************************
 *************************************************************************************
 * Public macros
@@ -29,20 +45,22 @@
   #define mDefaultValueOfChannel_c (0x0001FFFF)
   #define mDefaultMaxChannel_c     (0x11)
 #else
-  #define mDefaultValueOfChannel_c (0x07FFF800)
+  #define mDefaultValueOfChannel_c (1<<25)
 #endif
 
 #define mMacExtendedAddress_c    (0x1111111111111111)
 
 /* Set the Coordinator short address */ 
-#define mDefaultValueOfShortAddress_c     0xCAFE
+#define mDefaultValueOfShortAddress_c     0x0000
 
 /* Set the Coordinator PanID */ 
-#define mDefaultValueOfPanId_c            0xBEEF
+#define mDefaultValueOfPanId_c            0x3333
 
 /* Maximum number of outstanding packets */
 #define mDefaultValueOfMaxPendingDataPackets_c 2
 
+/* Setting the maximun devices */
+#define maxDevices  				      5
 /************************************************************************************
 *************************************************************************************
 * Private type definitions

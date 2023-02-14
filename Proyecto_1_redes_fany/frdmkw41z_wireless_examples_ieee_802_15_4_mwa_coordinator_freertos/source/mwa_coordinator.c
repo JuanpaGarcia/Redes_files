@@ -37,9 +37,17 @@
 #include "board.h"
 #include "fsl_os_abstraction.h"
 
+
+/* New includes @Diego */
+#include "pin_mux.h"
+#include "board.h"
+#include "fsl_debug_console.h"
+#include "stdio.h"
+
 /************************************************************************************
 *************************************************************************************
 * Private macros
+
 *************************************************************************************
 ************************************************************************************/
 
@@ -77,7 +85,11 @@ extern void Mac_SetExtendedAddress(uint8_t *pAddr, instanceId_t instanceId);
 * Private type definitions
 *************************************************************************************
 ************************************************************************************/
+/* Function for change the LED color*/
+void color_on(char selector);
 
+uint8_t node_counter_g = 0;
+mcps_Nodes_t Nodes_array[maxDevices] = {0};
 
 /************************************************************************************
 *************************************************************************************
@@ -119,8 +131,6 @@ osaEventId_t          mAppEvent;
 * Public memory declarations
 *************************************************************************************
 ************************************************************************************/
-
-/* The current state of the applications state machine */
 uint8_t gState;
 
 /************************************************************************************
@@ -157,6 +167,7 @@ void main_task(uint32_t param)
         LED_Init();
         SecLib_Init();
         SerialManager_Init();
+
         Phy_Init();
         RNG_Init(); /* RNG must be initialized after the PHY is Initialized */
         MAC_Init();
@@ -708,7 +719,8 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
 {
   mlmeMessage_t *pMsg;
   mlmeAssociateRes_t *pAssocRes;
- 
+
+
   Serial_Print(interfaceId,"Sending the MLME-Associate Response message to the MAC...", gAllowToBlock_d);
  
   /* Allocate a message for the MLME */
@@ -728,8 +740,54 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
        be assigned to it. */
     if(pMsgIn->msgData.associateInd.capabilityInfo & gCapInfoAllocAddr_c)
     {
-      /* Assign a unique short address less than 0xfffe if the device requests so. */
-      pAssocRes->assocShortAddress = 0x0001;
+		uint8_t node_saved_before = false;
+		uint8_t i ;
+
+		for(i=0; i<node_counter_g; i++)
+		{
+			if((pMsgIn->msgData.associateInd.deviceAddress) == (Nodes_array[i].ExtendedAddress))
+			{
+				//if this statment is reached then the device was already on the netwrok and reasign the data
+				pAssocRes->assocShortAddress = (Nodes_array[i].shortAddress);	//reasign previous address
+				//this flagh will let us know whether this statmente was reached or not
+				node_saved_before = true;
+				//end the for loop
+				break;
+			}
+		}
+
+		if(false == node_saved_before)	//register the node or not, depending on flag
+		{
+			//since the device extendede address was not set before, this node is new, so add it
+			Nodes_array[node_counter_g].ExtendedAddress = pMsgIn->msgData.associateInd.deviceAddress;
+			//increment the count
+			node_counter_g++;
+			//assign the short address based on the global node counter
+			Nodes_array[node_counter_g].shortAddress = node_counter_g;
+
+			pAssocRes->assocShortAddress = node_counter_g;
+			//add the device type if its FFD or can become coordinator assign FFD, else RFD
+
+			if((pMsgIn->msgData.associateInd.capabilityInfo & gCapInfoDeviceFfd_c) || (pMsgIn->msgData.associateInd.capabilityInfo & gCapInfoAltPanCoord_c))
+			{
+				Nodes_array[node_counter_g].DeviceType = gCapInfoDeviceFfd_c;
+			}
+			else
+			{
+				Nodes_array[node_counter_g].DeviceType = gCapInfoDeviceFfd_c;
+			}
+
+			//check weather its RxOnWhenIdle
+			if((pMsgIn->msgData.associateInd.capabilityInfo)&gCapInfoRxWhenIdle_c)
+			{
+				Nodes_array[node_counter_g].RxOn = true;
+			}
+			else
+			{
+				Nodes_array[node_counter_g].RxOn = false;
+			}
+		}
+
     }
     else
     {
@@ -786,6 +844,7 @@ static uint8_t App_HandleMlmeInput(nwkMessage_t *pMsg, uint8_t appInstance)
   switch(pMsg->msgType) {
   case gMlmeAssociateInd_c:
     Serial_Print(interfaceId,"Received an MLME-Associate Indication from the MAC\n\r", gAllowToBlock_d);
+
     /* A device sent us an Associate Request. We must send back a response.  */
     return App_SendAssociateResponse(pMsg, appInstance);
     
@@ -807,6 +866,9 @@ static uint8_t App_HandleMlmeInput(nwkMessage_t *pMsg, uint8_t appInstance)
 ******************************************************************************/
 static void App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstance)
 {
+	/* Asign the value for update the color on our switch */
+	char var = *(pMsgIn->msgData.dataInd.pMsdu);
+
   switch(pMsgIn->msgType)
   {
     /* The MCPS-Data confirm is sent by the MAC to the network
@@ -822,7 +884,34 @@ static void App_HandleMcpsInput(mcpsToNwkMessage_t *pMsgIn, uint8_t appInstance)
        copy the received data to the UART. */
     Serial_SyncWrite( interfaceId,pMsgIn->msgData.dataInd.pMsdu, pMsgIn->msgData.dataInd.msduLength );
 
-    char var = *(pMsgIn->msgData.dataInd.pMsdu);
+    /* Switch case for change the color */
+     color_on(var);
+
+    /* Print the address who send the package */
+	Serial_Print(interfaceId, "\n\rThe Address its: 0x", gAllowToBlock_d);
+	/* Print the value of the Address */
+	uint64_t extended_address = pMsgIn->msgData.dataInd.srcAddr;
+	uint8_t name[8] = {0};
+	name[0] = extended_address & 0xFF;
+	name[1] = (extended_address & 0xFF00)>>8;
+	name[2] = (extended_address & 0xFF0000)>>16;
+	name[3] = (extended_address & 0xFF000000)>>24;
+	name[4] = (extended_address & 0xFF00000000)>>32;
+	name[5] = (extended_address & 0xFF0000000000)>>40;
+	name[6] = (extended_address & 0xFF000000000000)>>48;
+	name[7] = (extended_address & 0xFF00000000000000)>>56;
+
+	Serial_PrintHex(interfaceId, name, 8, gPrtHexNoFormat_c);
+
+	/* Print on terminal LQI */
+	Serial_Print(interfaceId, "\n\rThe link Quality (LQI) its: 0x", gAllowToBlock_d);
+	/* Print the value of the LQI in hexa */
+	Serial_PrintHex(interfaceId, &(pMsgIn->msgData.dataInd.mpduLinkQuality), 1, gPrtHexNoFormat_c);
+
+	/* Print the payload size */
+	Serial_Print(interfaceId, "\n\rPayload its: 0x", gAllowToBlock_d);
+	/* Print the value of the payload size in hexa */
+	Serial_PrintHex(interfaceId, &(pMsgIn->msgData.dataInd.msduLength), 1, gPrtHexNoFormat_c);
     break;
     
   default:
@@ -999,3 +1088,38 @@ resultType_t MCPS_NWK_SapHandler (mcpsToNwkMessage_t* pMsg, instanceId_t instanc
   OSA_EventSet(mAppEvent, gAppEvtMessageFromMCPS_c);
   return gSuccess_c;
 }
+
+/******************************************************************************
+@Diego Functions
+******************************************************************************/
+void color_on(char selector)
+{
+
+    /* Turning off all LEDS */
+	 TurnOffLeds();
+
+	/* Checking the number wich was recived from the Counter x */
+	switch (selector)
+	{
+		case '0':
+			/*Turning on LED_RED*/
+			Led_TurnOn(LED2);//Turn on red led
+			break;
+		case '1':
+			/* Turning on LED GREEN */
+			Led_TurnOn(LED3);//Turn on red led
+			break;
+		case '2':
+			/*Turning on LED BLUE */
+			Led_TurnOn(LED4);//Turn on red led
+			break;
+		case '3':
+			/* Turning on all Leds */
+			Led_TurnOn(LED2);//Turn on red led
+			Led_TurnOn(LED3);//Turn on red led
+			Led_TurnOn(LED4);//Turn on red led
+			break;
+	}
+}
+
+
