@@ -36,7 +36,7 @@ while(1)
 
 	OSA_EventWait(Proyect_events, osaEventFlagsAll_c, FALSE, osaWaitForever_c,
 	&customEvent);
-
+	TurnOffLeds(); /* Ensure all LEDs are turned off */
 	  /* Depending on the received event */
 	  switch(customEvent){
 		  case gTimer_init_event_c:
@@ -50,11 +50,27 @@ while(1)
 		   break;
 
 		  case gSW3TaskEvent_c: /* Event called from myTaskTimerCallback */
-			  counter = '1';
+			  counter = '2';
+			   TMR_StartIntervalTimer(proyect_timer, /*myTimerID*/
+					   WAIT_TIME, /* Timer's Timeout */
+				 myTaskTimerCallback, /* pointer to
+			myTaskTimerCallback function */
+				 NULL
+			   );
+			   Led_TurnOn(LED4);//Turn on green led
+			   set_event_ptr();
 		   break;
 
 		  case gSW4TaskEvent_c:
-			  counter = '2';
+			  counter = '1';
+			   TMR_StartIntervalTimer(proyect_timer, /*myTimerID*/
+					   WAIT_TIME, /* Timer's Timeout */
+				 myTaskTimerCallback, /* pointer to
+			myTaskTimerCallback function */
+				 NULL
+			   );
+			   set_event_ptr();
+			   Led_TurnOn(LED3);//Turn on green led
 			  break;
 
 		  case gTimerStop_c: /* Event to stop the timer */

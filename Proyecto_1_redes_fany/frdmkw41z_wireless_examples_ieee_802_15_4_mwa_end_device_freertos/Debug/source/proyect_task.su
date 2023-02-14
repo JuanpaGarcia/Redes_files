@@ -1,9 +1,9 @@
 ../source/proyect_task.c:29:6:Proyect_task	32	static
-../source/proyect_task.c:105:6:Proyect_task_Init	8	static
-../source/proyect_task.c:114:6:myTaskTimerCallback	16	static
-../source/proyect_task.c:120:6:MyTaskTimer_Stop	8	static
-../source/proyect_task.c:125:6:MyTaskTimer_Start	8	static
-../source/proyect_task.c:130:6:sw3_function	8	static
-../source/proyect_task.c:135:6:sw4_function	8	static
-../source/proyect_task.c:140:6:set_funtion_pointer	16	static
-../source/proyect_task.c:145:10:get_message_to_send	8	static
+../source/proyect_task.c:121:6:Proyect_task_Init	8	static
+../source/proyect_task.c:130:6:myTaskTimerCallback	16	static
+../source/proyect_task.c:136:6:MyTaskTimer_Stop	8	static
+../source/proyect_task.c:141:6:MyTaskTimer_Start	8	static
+../source/proyect_task.c:146:6:sw3_function	8	static
+../source/proyect_task.c:151:6:sw4_function	8	static
+../source/proyect_task.c:156:6:set_funtion_pointer	16	static
+../source/proyect_task.c:161:10:get_message_to_send	8	static

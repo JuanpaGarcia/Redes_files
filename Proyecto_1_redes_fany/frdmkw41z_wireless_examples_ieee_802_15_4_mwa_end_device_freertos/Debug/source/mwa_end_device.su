@@ -14,6 +14,6 @@
 ../source/mwa_end_device.c:1157:13:App_TransmitCounterData	24	static
 ../source/mwa_end_device.c:1227:16:AppPollWaitTimeout	32	static
 ../source/mwa_end_device.c:1267:13:App_HandleKeys	16	static
-../source/mwa_end_device.c:1313:14:MLME_NWK_SapHandler	16	static
-../source/mwa_end_device.c:1321:14:MCPS_NWK_SapHandler	16	static
-../source/mwa_end_device.c:1329:6:set_event_counter	8	static
+../source/mwa_end_device.c:1311:14:MLME_NWK_SapHandler	16	static
+../source/mwa_end_device.c:1319:14:MCPS_NWK_SapHandler	16	static
+../source/mwa_end_device.c:1327:6:set_event_counter	8	static

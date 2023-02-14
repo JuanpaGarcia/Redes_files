@@ -36,6 +36,8 @@ typedef struct
 	/* Device type */
 	macCapabilityInfo_tag DeviceType;
 } mcps_Nodes_t;
+
+
 /************************************************************************************
 *************************************************************************************
 * Public macros
@@ -61,6 +63,8 @@ typedef struct
 
 /* Setting the maximun devices */
 #define maxDevices  				      5
+
+#define gCapInfoDeviceRfd_c		112
 /************************************************************************************
 *************************************************************************************
 * Private type definitions

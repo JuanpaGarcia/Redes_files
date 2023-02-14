@@ -776,11 +776,11 @@ static uint8_t App_SendAssociateResponse(nwkMessage_t *pMsgIn, uint8_t appInstan
 			}
 			else
 			{
-				Nodes_array[node_counter_g].DeviceType = gCapInfoDeviceFfd_c;
+				Nodes_array[node_counter_g].DeviceType = gCapInfoDeviceRfd_c;
 			}
 
 			//check weather its RxOnWhenIdle
-			if((pMsgIn->msgData.associateInd.capabilityInfo)&gCapInfoRxWhenIdle_c)
+			if((pMsgIn->msgData.associateInd.capabilityInfo) & gCapInfoRxWhenIdle_c)
 			{
 				Nodes_array[node_counter_g].RxOn = true;
 			}

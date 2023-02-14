@@ -1274,18 +1274,16 @@ static void App_HandleKeys
     { 
     case gKBD_EventLongSW1_c:
         OSA_EventSet(mAppEvent, gAppEvtPressedRestoreNvmBut_c);
+        break;
     case gKBD_EventLongSW2_c:
     case gKBD_EventLongSW3_c:
     case gKBD_EventLongSW4_c:
     case gKBD_EventSW1_c:
-    case gKBD_EventSW2_c:
-
-    case gKBD_EventSW3_c:
-    	/*Set the event to make counter = 0 to change to 1 when timer's callback takes places*/
     	sw3_function();
-    case gKBD_EventSW4_c:
-    	/*Set the event to make counter = 1 to change to 2 when timer's callback takes places*/
+    	break;
+    case gKBD_EventSW2_c:
     	sw4_function();
+    	break;
 
 #if gTsiSupported_d
     case gKBD_EventSW5_c:    
@@ -1295,12 +1293,12 @@ static void App_HandleKeys
     case gKBD_EventLongSW5_c:
     case gKBD_EventLongSW6_c:       
 #endif
-        if(gState == stateInit)
-        {
-            LED_StopFlashingAllLeds();
-            OSA_EventSet(mAppEvent, gAppEvtDummyEvent_c);
-        }
     }
+	if(gState == stateInit)
+	{
+		LED_StopFlashingAllLeds();
+		OSA_EventSet(mAppEvent, gAppEvtDummyEvent_c);
+	}
 #endif
 }
 
